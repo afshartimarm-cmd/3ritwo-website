@@ -10,11 +10,13 @@ app.secret_key = os.environ.get("SECRET_KEY", "change-this-before-publishing-" +
 app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MEDIA_DIR = os.path.join(BASE_DIR, "media")
-DB_PATH = os.path.join(BASE_DIR, "music.db")
-os.makedirs(MEDIA_DIR, exist_ok=True)
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "12345678")
 
+DATA_DIR = os.environ.get("DATA_DIR", "/tmp/3ritwo_data")
+MEDIA_DIR = os.path.join(DATA_DIR, "media")
+DB_PATH = os.path.join(DATA_DIR, "music.db")
+
+os.makedirs(MEDIA_DIR, exist_ok=True)
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "Abolfazl")
 ALLOWED = {
     "cover": {"jpg", "jpeg", "png", "webp"},
     "audio": {"mp3", "wav", "ogg", "m4a", "aac", "flac"},
